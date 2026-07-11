@@ -4,325 +4,206 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Tính Thuế TNCN 2026 – Công Cụ Tính Thuế Thu Nhập Cá Nhân Mới Nhất</title>
-<meta name="description" content="Công cụ tính thuế thu nhập cá nhân (TNCN) 2026 theo biểu thuế 5 bậc và mức giảm trừ gia cảnh mới: bản thân 15,5 triệu, người phụ thuộc 6,2 triệu. Tính nhanh, chính xác, miễn phí.">
+<meta name="description" content="Công cụ tính thuế thu nhập cá nhân (TNCN) 2026 theo biểu thuế 5 bậc và mức giảm trừ gia cảnh mới: bản thân 15,5 triệu, người phụ thuộc 6,2 triệu.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Be+Vietnam+Pro:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --teal:#0d6e5f;
-    --teal-deep:#0a4f45;
-    --teal-bright:#17a58c;
-    --gold:#c9a84c;
-    --cream:#f6f4ee;
-    --paper:#fffefb;
-    --ink:#12211d;
-    --ink-soft:#5a6b64;
-    --line:#e4e0d4;
-    --tax:#b4502f;
-  }
+  :root{--teal:#0d6e5f;--teal-deep:#0a4f45;--teal-bright:#17a58c;--gold:#c9a84c;--cream:#f6f4ee;--paper:#fffefb;--ink:#12211d;--ink-soft:#5a6b64;--line:#e4e0d4;--tax:#b4502f}
   *{box-sizing:border-box;margin:0;padding:0}
-  body{
-    font-family:'Be Vietnam Pro',system-ui,sans-serif;
-    background:
-      radial-gradient(circle at 100% 0%, #12876f 0%, transparent 40%),
-      radial-gradient(circle at 0% 100%, #0a4f45 0%, transparent 45%),
-      var(--teal);
-    color:var(--ink);min-height:100vh;padding:28px 16px 60px;line-height:1.55;
-  }
+  body{font-family:'Be Vietnam Pro',system-ui,sans-serif;background:radial-gradient(circle at 100% 0%, #12876f 0%, transparent 40%),radial-gradient(circle at 0% 100%, #0a4f45 0%, transparent 45%),var(--teal);color:var(--ink);min-height:100vh;padding:28px 16px 60px;line-height:1.55}
   .wrap{max-width:520px;margin:0 auto}
-
+  .lang-switch{position:fixed;top:12px;right:12px;z-index:100;display:flex;gap:2px;background:rgba(0,0,0,.3);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.2);border-radius:999px;padding:3px}
+  .lang-switch button{border:none;background:transparent;color:#d5eee7;font-family:'Be Vietnam Pro',sans-serif;font-weight:600;font-size:12px;padding:5px 10px;border-radius:999px;cursor:pointer;line-height:1}
+  .lang-switch button.active{background:var(--gold);color:#0a4f45}
+  .lang-switch button:hover:not(.active){color:#fff}
   header.brand{color:var(--cream);text-align:center;margin-bottom:22px}
-  .brand .eyebrow{
-    font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.28em;
-    text-transform:uppercase;color:#bfe6dc;
-  }
-  .brand h1{
-    font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:29px;
-    line-height:1.15;margin-top:6px;text-shadow:0 2px 10px rgba(0,0,0,.3);
-  }
+  .brand .home{display:inline-block;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#bfe6dc;text-decoration:none;margin-bottom:8px;opacity:.9}
+  .brand .home:hover{color:#fff}
+  .brand .eyebrow{font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.28em;text-transform:uppercase;color:#bfe6dc}
+  .brand h1{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:29px;line-height:1.15;margin-top:6px;text-shadow:0 2px 10px rgba(0,0,0,.3)}
   .brand p{font-size:13px;color:#d5eee7;margin-top:6px}
-
-  .card{
-    background:var(--paper);border-radius:16px;overflow:hidden;
-    box-shadow:0 20px 46px -18px rgba(0,0,0,.5);
-  }
-  .card-head{
-    background:linear-gradient(120deg,var(--teal-deep),var(--teal));
-    color:var(--cream);padding:16px 20px;display:flex;align-items:center;gap:10px;
-  }
-  .card-head .dong{
-    font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:22px;
-    width:38px;height:38px;border-radius:9px;background:rgba(255,255,255,.14);
-    display:grid;place-items:center;border:1px solid rgba(255,255,255,.2);
-  }
+  .card{background:var(--paper);border-radius:16px;overflow:hidden;box-shadow:0 20px 46px -18px rgba(0,0,0,.5)}
+  .card-head{background:linear-gradient(120deg,var(--teal-deep),var(--teal));color:var(--cream);padding:16px 20px;display:flex;align-items:center;gap:10px}
+  .card-head .dong{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:22px;width:38px;height:38px;border-radius:9px;background:rgba(255,255,255,.14);display:grid;place-items:center;border:1px solid rgba(255,255,255,.2)}
   .card-head h2{font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:600}
   .card-head span{font-size:12px;color:#bfe6dc;display:block}
-
   .inputs{padding:20px}
   .field{margin-bottom:16px}
   .field label{display:block;font-size:13.5px;font-weight:600;margin-bottom:6px}
   .field .hint{font-weight:400;color:var(--ink-soft);font-size:12px}
   .money-input{position:relative}
-  .money-input input{
-    width:100%;border:1.5px solid var(--line);border-radius:10px;
-    padding:13px 44px 13px 14px;font-family:'Space Mono',monospace;font-size:18px;
-    font-weight:700;color:var(--ink);background:#fcfbf7;text-align:right;
-  }
+  .money-input input{width:100%;border:1.5px solid var(--line);border-radius:10px;padding:13px 44px 13px 14px;font-family:'Space Mono',monospace;font-size:18px;font-weight:700;color:var(--ink);background:#fcfbf7;text-align:right}
   .money-input input:focus{outline:none;border-color:var(--teal-bright);background:#fff}
-  .money-input .unit{
-    position:absolute;right:14px;top:50%;transform:translateY(-50%);
-    font-family:'Space Mono',monospace;font-weight:700;color:var(--ink-soft);font-size:15px;
-  }
-
+  .money-input .unit{position:absolute;right:14px;top:50%;transform:translateY(-50%);font-family:'Space Mono',monospace;font-weight:700;color:var(--ink-soft);font-size:15px}
   .row{display:flex;gap:12px}
   .row .field{flex:1}
   .stepper{display:flex;align-items:center;border:1.5px solid var(--line);border-radius:10px;overflow:hidden;background:#fcfbf7}
-  .stepper button{
-    border:none;background:transparent;width:44px;height:48px;font-size:22px;
-    color:var(--teal);cursor:pointer;font-weight:700
-  }
+  .stepper button{border:none;background:transparent;width:44px;height:48px;font-size:22px;color:var(--teal);cursor:pointer;font-weight:700}
   .stepper button:hover{background:#eef6f3}
-  .stepper input{
-    flex:1;border:none;text-align:center;font-family:'Space Mono',monospace;
-    font-weight:700;font-size:18px;background:transparent;color:var(--ink);width:100%
-  }
+  .stepper input{flex:1;border:none;text-align:center;font-family:'Space Mono',monospace;font-weight:700;font-size:18px;background:transparent;color:var(--ink);width:100%}
   .stepper input:focus{outline:none}
-
   .toggle{display:flex;align-items:center;gap:10px;background:#f1f6f4;border-radius:10px;padding:12px 14px;cursor:pointer}
   .toggle input{width:18px;height:18px;accent-color:var(--teal)}
   .toggle .t-txt{font-size:13.5px}
   .toggle .t-txt b{display:block}
   .toggle .t-txt span{color:var(--ink-soft);font-size:12px}
-
-  /* ---- receipt (signature element) ---- */
   .receipt{border-top:2px dashed var(--line);background:#fbfaf5;padding:20px 22px 24px}
-  .receipt h3{
-    font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.16em;
-    text-transform:uppercase;color:var(--ink-soft);text-align:center;margin-bottom:16px;
-  }
+  .receipt h3{font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-soft);text-align:center;margin-bottom:16px}
   .line{display:flex;justify-content:space-between;align-items:baseline;padding:7px 0;font-size:14px;gap:12px}
   .line .k{color:var(--ink-soft)}
   .line .v{font-family:'Space Mono',monospace;font-weight:700;white-space:nowrap}
   .line.sub .k{padding-left:14px;font-size:13px}
   .line.minus .v{color:var(--tax)}
   .divide{border-top:1px solid var(--line);margin:8px 0}
-
   .brackets{margin:6px 0 4px;background:#fff;border:1px solid var(--line);border-radius:10px;padding:6px 12px}
   .brackets .bk{display:flex;justify-content:space-between;font-size:12.5px;padding:5px 0;color:var(--ink-soft)}
   .brackets .bk.active{color:var(--ink);font-weight:600}
   .brackets .bk .amt{font-family:'Space Mono',monospace}
-
-  .total{
-    margin-top:14px;background:linear-gradient(120deg,var(--teal-deep),var(--teal));
-    border-radius:12px;padding:16px 18px;color:#fff;
-  }
+  .total{margin-top:14px;background:linear-gradient(120deg,var(--teal-deep),var(--teal));border-radius:12px;padding:16px 18px;color:#fff}
   .total .tt-row{display:flex;justify-content:space-between;align-items:center;padding:4px 0}
   .total .tt-row .lbl{font-size:13px;color:#cfeae3}
   .total .tt-row .num{font-family:'Space Mono',monospace;font-weight:700;font-size:16px}
   .total .big{border-top:1px solid rgba(255,255,255,.18);margin-top:8px;padding-top:12px}
   .total .big .lbl{font-size:14px;color:#fff;font-weight:600}
   .total .big .num{font-family:'Space Grotesk',sans-serif;font-size:26px;color:var(--gold)}
-
-  .note{font-size:11.5px;color:var(--ink-soft);margin-top:14px;line-height:1.6}
-
   .adslot{margin-top:22px;border:1px dashed rgba(224,230,220,.4);border-radius:12px;padding:20px;text-align:center;color:#d5eee7;font-size:13px;opacity:.8}
-
   .article{background:var(--paper);border-radius:14px;padding:24px 22px;margin-top:22px;box-shadow:0 12px 30px -18px rgba(0,0,0,.4)}
   .article h2{font-family:'Space Grotesk',sans-serif;font-size:18px;color:var(--teal-deep);margin:16px 0 8px}
   .article h2:first-child{margin-top:0}
   .article p{font-size:14px;color:var(--ink-soft);margin-bottom:9px}
-  .article strong{color:var(--ink)}
   .article table{width:100%;border-collapse:collapse;margin:8px 0;font-size:13px}
   .article th,.article td{border:1px solid var(--line);padding:7px 9px;text-align:left}
   .article th{background:#eef6f3;font-weight:600}
   .article td:last-child{font-family:'Space Mono',monospace;text-align:right}
-
   footer{text-align:center;color:#d5eee7;font-size:12px;margin-top:22px;opacity:.85;line-height:1.7}
-
   @media (max-width:400px){.brand h1{font-size:24px}.total .big .num{font-size:22px}}
   :focus-visible{outline:3px solid var(--gold);outline-offset:2px}
 </style>
 </head>
 <body>
+<div class="lang-switch" id="langSwitch"><button data-lang="vi">VI</button><button data-lang="ko">KO</button><button data-lang="en">EN</button></div>
 <div class="wrap">
-
   <header class="brand">
-    <div class="eyebrow">Cập nhật 2026</div>
-    <h1>Tính Thuế Thu Nhập Cá Nhân</h1>
-    <p>Biểu thuế 5 bậc mới · Giảm trừ gia cảnh 15,5 triệu</p>
+    <a class="home" href="index.html">← Tiện Ích Việt</a>
+    <div class="eyebrow" data-i18n="eyebrow">Cập nhật 2026</div>
+    <h1 data-i18n="h1">Tính Thuế Thu Nhập Cá Nhân</h1>
+    <p data-i18n="tagline">Biểu thuế 5 bậc mới · Giảm trừ gia cảnh 15,5 triệu</p>
   </header>
 
   <div class="card">
     <div class="card-head">
       <div class="dong">₫</div>
-      <div><h2>Nhập thu nhập của bạn</h2><span>Tính theo tháng · đơn vị VNĐ</span></div>
+      <div><h2 data-i18n="headTitle">Nhập thu nhập của bạn</h2><span data-i18n="headSub">Tính theo tháng · đơn vị VNĐ</span></div>
     </div>
-
     <div class="inputs">
       <div class="field">
-        <label for="gross">Tổng thu nhập / tháng <span class="hint">(lương gộp trước thuế)</span></label>
-        <div class="money-input">
-          <input type="text" id="gross" inputmode="numeric" placeholder="30.000.000">
-          <span class="unit">₫</span>
-        </div>
+        <label for="gross" data-i18n="lblGross">Tổng thu nhập / tháng <span class="hint" data-i18n="hintGross">(lương gộp trước thuế)</span></label>
+        <div class="money-input"><input type="text" id="gross" inputmode="numeric" placeholder="30.000.000"><span class="unit">₫</span></div>
       </div>
-
       <div class="row">
         <div class="field">
-          <label for="dep">Người phụ thuộc</label>
-          <div class="stepper">
-            <button type="button" id="minus">−</button>
-            <input type="text" id="dep" inputmode="numeric" value="0" readonly>
-            <button type="button" id="plus">+</button>
-          </div>
+          <label for="dep" data-i18n="lblDep">Người phụ thuộc</label>
+          <div class="stepper"><button type="button" id="minus">−</button><input type="text" id="dep" inputmode="numeric" value="0" readonly><button type="button" id="plus">+</button></div>
         </div>
         <div class="field">
-          <label for="ins">Bảo hiểm / tháng <span class="hint">(tùy chọn)</span></label>
-          <div class="money-input">
-            <input type="text" id="ins" inputmode="numeric" placeholder="tự động">
-            <span class="unit">₫</span>
-          </div>
+          <label for="ins" data-i18n="lblIns">Bảo hiểm / tháng <span class="hint" data-i18n="hintIns">(tùy chọn)</span></label>
+          <div class="money-input"><input type="text" id="ins" inputmode="numeric" data-i18n-ph="phIns" placeholder="tự động"><span class="unit">₫</span></div>
         </div>
       </div>
-
-      <label class="toggle">
-        <input type="checkbox" id="autoIns" checked>
-        <span class="t-txt"><b>Tự động trừ bảo hiểm bắt buộc (10,5%)</b><span>BHXH 8% + BHYT 1,5% + BHTN 1%</span></span>
-      </label>
+      <label class="toggle"><input type="checkbox" id="autoIns" checked><span class="t-txt"><b data-i18n="toggleB">Tự động trừ bảo hiểm bắt buộc (10,5%)</b><span data-i18n="toggleS">BHXH 8% + BHYT 1,5% + BHTN 1%</span></span></label>
     </div>
-
-    <div class="receipt">
-      <h3>— Chi tiết tính thuế —</h3>
-      <div id="out"></div>
-    </div>
+    <div class="receipt"><h3 data-i18n="receiptTitle">— Chi tiết tính thuế —</h3><div id="out"></div></div>
   </div>
 
-  <div class="adslot">Khu vực quảng cáo &nbsp;•&nbsp; <!-- Google AdSense --></div>
+  <div class="adslot"><span data-i18n="adArea">Khu vực quảng cáo</span> &nbsp;•&nbsp; <!-- Google AdSense --></div>
 
   <article class="article">
-    <h2>Biểu thuế TNCN 2026 (5 bậc)</h2>
-    <p>Từ kỳ tính thuế 2026, biểu thuế lũy tiến rút gọn từ 7 bậc xuống còn <strong>5 bậc</strong>, áp dụng cho thu nhập tính thuế theo tháng:</p>
+    <h2 data-i18n="a1h">Biểu thuế TNCN 2026 (5 bậc)</h2>
+    <p data-i18n="a1p">Từ kỳ tính thuế 2026, biểu thuế lũy tiến rút gọn từ 7 bậc xuống còn 5 bậc, áp dụng cho thu nhập tính thuế theo tháng:</p>
     <table>
-      <tr><th>Bậc</th><th>Thu nhập tính thuế / tháng</th><th>Thuế suất</th></tr>
-      <tr><td>1</td><td>Đến 10 triệu</td><td>5%</td></tr>
-      <tr><td>2</td><td>Trên 10 – 30 triệu</td><td>10%</td></tr>
-      <tr><td>3</td><td>Trên 30 – 60 triệu</td><td>20%</td></tr>
-      <tr><td>4</td><td>Trên 60 – 100 triệu</td><td>30%</td></tr>
-      <tr><td>5</td><td>Trên 100 triệu</td><td>35%</td></tr>
+      <tr><th data-i18n="tBac">Bậc</th><th data-i18n="tRange">Thu nhập tính thuế / tháng</th><th data-i18n="tRate">Thuế suất</th></tr>
+      <tr><td>1</td><td data-i18n="tr1">Đến 10 triệu</td><td>5%</td></tr>
+      <tr><td>2</td><td data-i18n="tr2">Trên 10 – 30 triệu</td><td>10%</td></tr>
+      <tr><td>3</td><td data-i18n="tr3">Trên 30 – 60 triệu</td><td>20%</td></tr>
+      <tr><td>4</td><td data-i18n="tr4">Trên 60 – 100 triệu</td><td>30%</td></tr>
+      <tr><td>5</td><td data-i18n="tr5">Trên 100 triệu</td><td>35%</td></tr>
     </table>
-
-    <h2>Mức giảm trừ gia cảnh mới</h2>
-    <p>Áp dụng từ 2026: <strong>bản thân người nộp thuế 15,5 triệu đồng/tháng</strong>, mỗi <strong>người phụ thuộc 6,2 triệu đồng/tháng</strong>. Nhờ đó, người không có người phụ thuộc chỉ bắt đầu nộp thuế khi thu nhập vượt khoảng 17 triệu/tháng.</p>
-
-    <h2>Cách tính thuế</h2>
-    <p>Thu nhập tính thuế = Tổng thu nhập − Bảo hiểm bắt buộc − Giảm trừ gia cảnh. Sau đó áp dụng từng bậc thuế lên phần thu nhập tương ứng rồi cộng lại.</p>
+    <h2 data-i18n="a2h">Mức giảm trừ gia cảnh mới</h2>
+    <p data-i18n="a2p">Áp dụng từ 2026: bản thân người nộp thuế 15,5 triệu đồng/tháng, mỗi người phụ thuộc 6,2 triệu đồng/tháng. Nhờ đó, người không có người phụ thuộc chỉ bắt đầu nộp thuế khi thu nhập vượt khoảng 17 triệu/tháng.</p>
+    <h2 data-i18n="a3h">Cách tính thuế</h2>
+    <p data-i18n="a3p">Thu nhập tính thuế = Tổng thu nhập − Bảo hiểm bắt buộc − Giảm trừ gia cảnh. Sau đó áp dụng từng bậc thuế lên phần thu nhập tương ứng rồi cộng lại.</p>
   </article>
 
-  <footer>
-    Kết quả chỉ mang tính tham khảo theo biểu thuế TNCN 2026.<br>
-    Số thuế thực tế có thể khác tùy khoản miễn trừ riêng.
-  </footer>
+  <footer><span data-i18n="foot1">Kết quả chỉ mang tính tham khảo theo biểu thuế TNCN 2026.</span><br><span data-i18n="foot2">Số thuế thực tế có thể khác tùy khoản miễn trừ riêng.</span></footer>
 </div>
 
 <script>
-/* ===== TNCN 2026 constants ===== */
-var SELF_DED=15500000;          // giảm trừ bản thân / tháng
-var DEP_DED=6200000;            // giảm trừ mỗi người phụ thuộc / tháng
-var INS_RATE=0.105;             // BHXH+BHYT+BHTN người lao động đóng
-/* biểu thuế 5 bậc: [ngưỡng trần của bậc, thuế suất] */
-var BRACKETS=[
-  {cap:10000000, rate:0.05, label:"Đến 10 tr (5%)"},
-  {cap:30000000, rate:0.10, label:"10–30 tr (10%)"},
-  {cap:60000000, rate:0.20, label:"30–60 tr (20%)"},
-  {cap:100000000,rate:0.30, label:"60–100 tr (30%)"},
-  {cap:Infinity, rate:0.35, label:"Trên 100 tr (35%)"}
-];
+var SELF_DED=15500000, DEP_DED=6200000, INS_RATE=0.105;
+var BRACKETS=[{cap:10000000,rate:0.05},{cap:30000000,rate:0.10},{cap:60000000,rate:0.20},{cap:100000000,rate:0.30},{cap:Infinity,rate:0.35}];
 
-function fmt(n){
-  n=Math.round(n);
-  return n.toLocaleString('vi-VN');
-}
+var TL={
+ vi:{eyebrow:"Cập nhật 2026",h1:"Tính Thuế Thu Nhập Cá Nhân",tagline:"Biểu thuế 5 bậc mới · Giảm trừ gia cảnh 15,5 triệu",headTitle:"Nhập thu nhập của bạn",headSub:"Tính theo tháng · đơn vị VNĐ",lblGross:"Tổng thu nhập / tháng",hintGross:"(lương gộp trước thuế)",lblDep:"Người phụ thuộc",lblIns:"Bảo hiểm / tháng",hintIns:"(tùy chọn)",phIns:"tự động",toggleB:"Tự động trừ bảo hiểm bắt buộc (10,5%)",toggleS:"BHXH 8% + BHYT 1,5% + BHTN 1%",receiptTitle:"— Chi tiết tính thuế —",adArea:"Khu vực quảng cáo",
+  rGross:"Tổng thu nhập",rInsAuto:"− Bảo hiểm (10,5%)",rInsManual:"− Bảo hiểm (nhập tay)",rSelf:"− Giảm trừ bản thân",rDep:"− Người phụ thuộc",rTaxable:"Thu nhập tính thuế",rTax:"Thuế TNCN phải nộp",rNet:"Thực nhận (sau thuế + BH)",rEmpty:"Nhập thu nhập để xem kết quả.",
+  brk:["Đến 10 tr (5%)","10–30 tr (10%)","30–60 tr (20%)","60–100 tr (30%)","Trên 100 tr (35%)"],
+  a1h:"Biểu thuế TNCN 2026 (5 bậc)",a1p:"Từ kỳ tính thuế 2026, biểu thuế lũy tiến rút gọn từ 7 bậc xuống còn 5 bậc, áp dụng cho thu nhập tính thuế theo tháng:",tBac:"Bậc",tRange:"Thu nhập tính thuế / tháng",tRate:"Thuế suất",tr1:"Đến 10 triệu",tr2:"Trên 10 – 30 triệu",tr3:"Trên 30 – 60 triệu",tr4:"Trên 60 – 100 triệu",tr5:"Trên 100 triệu",a2h:"Mức giảm trừ gia cảnh mới",a2p:"Áp dụng từ 2026: bản thân người nộp thuế 15,5 triệu đồng/tháng, mỗi người phụ thuộc 6,2 triệu đồng/tháng. Nhờ đó, người không có người phụ thuộc chỉ bắt đầu nộp thuế khi thu nhập vượt khoảng 17 triệu/tháng.",a3h:"Cách tính thuế",a3p:"Thu nhập tính thuế = Tổng thu nhập − Bảo hiểm bắt buộc − Giảm trừ gia cảnh. Sau đó áp dụng từng bậc thuế lên phần thu nhập tương ứng rồi cộng lại.",foot1:"Kết quả chỉ mang tính tham khảo theo biểu thuế TNCN 2026.",foot2:"Số thuế thực tế có thể khác tùy khoản miễn trừ riêng."},
+ ko:{eyebrow:"2026 업데이트",h1:"베트남 개인소득세 계산",tagline:"신규 5단계 세율 · 인적공제 1,550만 동",headTitle:"소득을 입력하세요",headSub:"월 기준 · 단위 VND",lblGross:"월 총소득",hintGross:"(세전 총급여)",lblDep:"부양가족",lblIns:"월 보험료",hintIns:"(선택)",phIns:"자동",toggleB:"의무보험 자동 공제 (10.5%)",toggleS:"연금 8% + 건강 1.5% + 실업 1%",receiptTitle:"— 세금 계산 내역 —",adArea:"광고 영역",
+  rGross:"총소득",rInsAuto:"− 보험 (10.5%)",rInsManual:"− 보험 (직접 입력)",rSelf:"− 본인 공제",rDep:"− 부양가족",rTaxable:"과세 대상 소득",rTax:"납부할 소득세",rNet:"실수령 (세금+보험 공제 후)",rEmpty:"소득을 입력하면 결과가 표시됩니다.",
+  brk:["1천만까지 (5%)","1천~3천만 (10%)","3천~6천만 (20%)","6천~1억 (30%)","1억 초과 (35%)"],
+  a1h:"2026 소득세율표 (5단계)",a1p:"2026 과세연도부터 누진세율이 7단계에서 5단계로 축소되며, 월 과세소득에 적용됩니다:",tBac:"단계",tRange:"월 과세소득",tRate:"세율",tr1:"1천만까지",tr2:"1천~3천만",tr3:"3천~6천만",tr4:"6천~1억",tr5:"1억 초과",a2h:"새 인적공제 기준",a2p:"2026년부터 적용: 본인 월 1,550만 동, 부양가족 1인당 월 620만 동. 따라서 부양가족이 없으면 월 소득이 약 1,700만 동을 넘어야 세금이 발생합니다.",a3h:"계산 방식",a3p:"과세소득 = 총소득 − 의무보험 − 인적공제. 이후 각 세율 구간을 해당 소득에 적용해 합산합니다.",foot1:"결과는 2026 소득세율표에 따른 참고용입니다.",foot2:"개별 공제 항목에 따라 실제 세액은 다를 수 있습니다."},
+ en:{eyebrow:"Updated 2026",h1:"Personal Income Tax Calculator",tagline:"New 5-bracket table · Personal deduction 15.5M",headTitle:"Enter your income",headSub:"Monthly · unit VND",lblGross:"Gross income / month",hintGross:"(gross salary before tax)",lblDep:"Dependents",lblIns:"Insurance / month",hintIns:"(optional)",phIns:"auto",toggleB:"Auto-deduct mandatory insurance (10.5%)",toggleS:"Pension 8% + Health 1.5% + Unemp. 1%",receiptTitle:"— Tax calculation detail —",adArea:"Ad area",
+  rGross:"Gross income",rInsAuto:"− Insurance (10.5%)",rInsManual:"− Insurance (manual)",rSelf:"− Personal deduction",rDep:"− Dependents",rTaxable:"Taxable income",rTax:"Income tax due",rNet:"Take-home (after tax + insurance)",rEmpty:"Enter income to see results.",
+  brk:["Up to 10M (5%)","10–30M (10%)","30–60M (20%)","60–100M (30%)","Over 100M (35%)"],
+  a1h:"2026 tax table (5 brackets)",a1p:"From tax year 2026, the progressive table is reduced from 7 to 5 brackets, applied to monthly taxable income:",tBac:"Bracket",tRange:"Taxable income / month",tRate:"Rate",tr1:"Up to 10M",tr2:"Over 10 – 30M",tr3:"Over 30 – 60M",tr4:"Over 60 – 100M",tr5:"Over 100M",a2h:"New personal deductions",a2p:"From 2026: taxpayer 15.5M VND/month, each dependent 6.2M VND/month. As a result, someone with no dependents only starts paying tax once income exceeds about 17M/month.",a3h:"How tax is calculated",a3p:"Taxable income = Gross income − mandatory insurance − personal deductions. Each bracket rate is then applied to the corresponding portion of income and summed.",foot1:"Results are for reference based on the 2026 PIT table.",foot2:"Actual tax may differ depending on your individual deductions."}
+};
+
+function fmt(n){n=Math.round(n);return n.toLocaleString('vi-VN');}
 function parseNum(s){return parseInt((s||"").replace(/[^0-9]/g,""),10)||0;}
-
-function calcTax(taxable){
-  var tax=0, lower=0, parts=[];
-  for(var i=0;i<BRACKETS.length;i++){
-    var b=BRACKETS[i];
-    if(taxable>lower){
-      var slice=Math.min(taxable,b.cap)-lower;
-      var t=slice*b.rate;
-      tax+=t;
-      parts.push({label:b.label, amt:t, active:true});
-    } else {
-      parts.push({label:b.label, amt:0, active:false});
-    }
-    lower=b.cap;
-  }
-  return {tax:tax, parts:parts};
-}
-
+function calcTax(taxable){var tax=0,lower=0,parts=[];for(var i=0;i<BRACKETS.length;i++){var b=BRACKETS[i];if(taxable>lower){var slice=Math.min(taxable,b.cap)-lower;tax+=slice*b.rate;parts.push({i:i,amt:slice*b.rate,active:true});}else parts.push({i:i,amt:0,active:false});lower=b.cap;}return {tax:tax,parts:parts};}
 var $=function(id){return document.getElementById(id);};
 
 function render(){
+  var L=TL[getLang()]||TL.vi;
   var gross=parseNum($('gross').value);
   var dep=parseInt($('dep').value,10)||0;
   var autoIns=$('autoIns').checked;
-  var ins = autoIns ? Math.round(gross*INS_RATE) : parseNum($('ins').value);
-
+  var ins=autoIns?Math.round(gross*INS_RATE):parseNum($('ins').value);
   var depDed=dep*DEP_DED;
-  var taxable=gross-ins-SELF_DED-depDed;
-  if(taxable<0) taxable=0;
-
+  var taxable=gross-ins-SELF_DED-depDed; if(taxable<0)taxable=0;
   var r=calcTax(taxable);
   var net=gross-ins-r.tax;
-
-  var bracketRows=r.parts.filter(function(p){return p.active;}).map(function(p){
-    return '<div class="bk active"><span>'+p.label+'</span><span class="amt">'+fmt(p.amt)+' ₫</span></div>';
-  }).join("");
-
+  var bracketRows=r.parts.filter(function(p){return p.active;}).map(function(p){return '<div class="bk active"><span>'+L.brk[p.i]+'</span><span class="amt">'+fmt(p.amt)+' ₫</span></div>';}).join("");
   var html=''
-   +'<div class="line"><span class="k">Tổng thu nhập</span><span class="v">'+fmt(gross)+' ₫</span></div>'
-   +'<div class="line minus sub"><span class="k">− Bảo hiểm ('+(autoIns?'10,5%':'nhập tay')+')</span><span class="v">'+fmt(ins)+' ₫</span></div>'
-   +'<div class="line minus sub"><span class="k">− Giảm trừ bản thân</span><span class="v">'+fmt(SELF_DED)+' ₫</span></div>'
-   +(dep>0?'<div class="line minus sub"><span class="k">− Người phụ thuộc ×'+dep+'</span><span class="v">'+fmt(depDed)+' ₫</span></div>':'')
+   +'<div class="line"><span class="k">'+L.rGross+'</span><span class="v">'+fmt(gross)+' ₫</span></div>'
+   +'<div class="line minus sub"><span class="k">'+(autoIns?L.rInsAuto:L.rInsManual)+'</span><span class="v">'+fmt(ins)+' ₫</span></div>'
+   +'<div class="line minus sub"><span class="k">'+L.rSelf+'</span><span class="v">'+fmt(SELF_DED)+' ₫</span></div>'
+   +(dep>0?'<div class="line minus sub"><span class="k">'+L.rDep+' ×'+dep+'</span><span class="v">'+fmt(depDed)+' ₫</span></div>':'')
    +'<div class="divide"></div>'
-   +'<div class="line"><span class="k"><b>Thu nhập tính thuế</b></span><span class="v">'+fmt(taxable)+' ₫</span></div>';
-
-  if(taxable>0){
-    html+='<div class="brackets">'+bracketRows+'</div>';
-  }
-
-  html+='<div class="total">'
-   +'<div class="tt-row"><span class="lbl">Thuế TNCN phải nộp</span><span class="num" style="color:#ffd9a0">'+fmt(r.tax)+' ₫</span></div>'
-   +'<div class="tt-row big"><span class="lbl">Thực nhận (sau thuế + BH)</span><span class="num">'+fmt(net)+' ₫</span></div>'
-   +'</div>';
-
-  if(gross===0){
-    html='<p style="text-align:center;color:var(--ink-soft);font-size:14px;padding:14px 0">Nhập thu nhập để xem kết quả.</p>';
-  }
+   +'<div class="line"><span class="k"><b>'+L.rTaxable+'</b></span><span class="v">'+fmt(taxable)+' ₫</span></div>';
+  if(taxable>0)html+='<div class="brackets">'+bracketRows+'</div>';
+  html+='<div class="total"><div class="tt-row"><span class="lbl">'+L.rTax+'</span><span class="num" style="color:#ffd9a0">'+fmt(r.tax)+' ₫</span></div>'
+   +'<div class="tt-row big"><span class="lbl">'+L.rNet+'</span><span class="num">'+fmt(net)+' ₫</span></div></div>';
+  if(gross===0)html='<p style="text-align:center;color:var(--ink-soft);font-size:14px;padding:14px 0">'+L.rEmpty+'</p>';
   $('out').innerHTML=html;
 }
 
-/* live formatting of money inputs */
-function bindMoney(id){
-  var el=$(id);
-  el.addEventListener('input',function(){
-    var v=parseNum(el.value);
-    el.value = v? v.toLocaleString('vi-VN') : "";
-    render();
-  });
-}
-bindMoney('gross'); bindMoney('ins');
-$('autoIns').addEventListener('change',function(){
-  $('ins').disabled=this.checked;
-  $('ins').style.opacity=this.checked?.5:1;
-  render();
-});
+var _mem="vi";
+function getLang(){try{return localStorage.getItem("til_lang")||"vi"}catch(e){return _mem}}
+function setLang(l){_mem=l;try{localStorage.setItem("til_lang",l)}catch(e){}applyLang(l)}
+function applyLang(l){if(!TL[l])l="vi";document.documentElement.lang=l;
+  document.querySelectorAll("[data-i18n]").forEach(function(el){var k=el.getAttribute("data-i18n");if(TL[l][k]!==undefined)el.textContent=TL[l][k];});
+  document.querySelectorAll("[data-i18n-ph]").forEach(function(el){var k=el.getAttribute("data-i18n-ph");if(TL[l][k]!==undefined)el.placeholder=TL[l][k];});
+  document.querySelectorAll("#langSwitch button").forEach(function(b){b.classList.toggle("active",b.dataset.lang===l);});
+  render();}
+document.getElementById("langSwitch").addEventListener("click",function(e){if(e.target.dataset.lang)setLang(e.target.dataset.lang);});
+
+function bindMoney(id){var el=$(id);el.addEventListener('input',function(){var v=parseNum(el.value);el.value=v?v.toLocaleString('vi-VN'):"";render();});}
+bindMoney('gross');bindMoney('ins');
+$('autoIns').addEventListener('change',function(){$('ins').disabled=this.checked;$('ins').style.opacity=this.checked?.5:1;render();});
 $('plus').addEventListener('click',function(){$('dep').value=(+$('dep').value)+1;render();});
 $('minus').addEventListener('click',function(){$('dep').value=Math.max(0,(+$('dep').value)-1);render();});
 $('ins').disabled=true;$('ins').style.opacity=.5;
-render();
+applyLang(getLang());
 </script>
 </body>
 </html>

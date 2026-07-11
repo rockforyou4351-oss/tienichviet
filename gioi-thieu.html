@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Giới thiệu – Tiện Ích Việt</title>
+<meta name="description" content="Giới thiệu về Tiện Ích Việt – bộ công cụ tra cứu miễn phí cho người Việt: lịch âm, ngày tốt xấu, tính thuế thu nhập cá nhân.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--ink:#221c17;--stone:#efece4;--paper:#fffefb;--gold:#c9a24b;--gold-soft:#e2c987;--muted:#6a615a;--line:#e2ddd1;--red:#8c1c13;--teal:#0d6e5f}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Be Vietnam Pro',system-ui,sans-serif;background:var(--stone);color:var(--ink);line-height:1.6}
+  .lang-switch{position:fixed;top:12px;right:12px;z-index:100;display:flex;gap:2px;background:rgba(34,28,23,.72);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.15);border-radius:999px;padding:3px}
+  .lang-switch button{border:none;background:transparent;color:#d8cfc4;font-family:'Be Vietnam Pro',sans-serif;font-weight:600;font-size:12px;padding:5px 10px;border-radius:999px;cursor:pointer;line-height:1}
+  .lang-switch button.active{background:var(--gold);color:#221c17}
+  .lang-switch button:hover:not(.active){color:#fff}
+  .topbar{background:var(--ink);border-bottom:2px solid transparent;border-image:linear-gradient(90deg,var(--red) 0 50%,var(--teal) 50% 100%) 1}
+  .topbar .in{max-width:760px;margin:0 auto;padding:16px 20px;display:flex;justify-content:space-between;align-items:center}
+  .logo{font-family:'Space Grotesk',sans-serif;font-weight:700;color:var(--paper);text-decoration:none;font-size:18px}
+  .logo span{color:var(--gold-soft)}
+  .topbar nav a{color:#d8cfc4;text-decoration:none;font-size:13.5px;margin-left:16px}
+  .topbar nav a:hover{color:#fff}
+  main{max-width:760px;margin:0 auto;padding:36px 20px 10px}
+  .page-title{font-family:'Space Grotesk',sans-serif;font-size:clamp(26px,6vw,36px);font-weight:700;letter-spacing:-.02em;margin-bottom:6px}
+  .lead{color:var(--muted);font-size:15px;margin-bottom:24px}
+  .card{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:28px 26px;margin-bottom:18px}
+  .card h2{font-family:'Space Grotesk',sans-serif;font-size:19px;margin:20px 0 8px}
+  .card h2:first-child{margin-top:0}
+  .card p{font-size:14.5px;color:#43403a;margin-bottom:11px}
+  .card ul{margin:0 0 12px 20px}
+  .card li{font-size:14.5px;color:#43403a;margin-bottom:6px}
+  .card a{color:var(--teal);font-weight:600}
+  .pill{display:inline-block;background:#e6f3f0;color:var(--teal);font-size:12px;font-weight:600;padding:3px 10px;border-radius:20px;margin-right:6px}
+  footer{max-width:760px;margin:26px auto 0;padding:24px 20px 44px;border-top:1px solid var(--line);display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;align-items:center}
+  footer .name{font-family:'Space Grotesk',sans-serif;font-weight:600}
+  footer nav a{color:var(--muted);text-decoration:none;font-size:13.5px;margin-left:16px}
+  footer nav a:hover{color:var(--ink)}
+  footer .copy{width:100%;font-size:12px;color:var(--muted);opacity:.8}
+  :focus-visible{outline:3px solid var(--gold);outline-offset:3px;border-radius:6px}
+</style>
+</head>
+<body>
+  <div class="lang-switch" id="langSwitch"><button data-lang="vi">VI</button><button data-lang="ko">KO</button><button data-lang="en">EN</button></div>
+  <header class="topbar">
+    <div class="in">
+      <a class="logo" href="index.html">Tiện <span>Ích Việt</span></a>
+      <nav>
+        <a href="index.html" data-i18n="navHome">Trang chủ</a>
+        <a href="gioi-thieu.html" data-i18n="navAbout">Giới thiệu</a>
+        <a href="chinh-sach.html" data-i18n="navPrivacy">Chính sách</a>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <h1 class="page-title" data-i18n="title">Giới thiệu</h1>
+    <p class="lead" data-i18n="lead">Về Tiện Ích Việt và sứ mệnh của chúng tôi.</p>
+    <div class="card">
+      <h2 data-i18n="h_who">Chúng tôi là ai?</h2>
+      <p data-i18n="p_who">Tiện Ích Việt là một trang web tập hợp các công cụ tra cứu trực tuyến miễn phí, phục vụ những nhu cầu thiết thực trong đời sống hằng ngày của người Việt. Chúng tôi tin rằng những thông tin hữu ích như xem ngày lành tháng tốt hay tính toán thuế nên được tiếp cận dễ dàng, nhanh chóng và hoàn toàn miễn phí.</p>
+      <h2 data-i18n="h_tools">Công cụ hiện có</h2>
+      <ul>
+        <li data-i18n="li_lunar"><strong>Lịch Âm & Ngày Tốt</strong> — tra cứu lịch âm dương, ngày hoàng đạo, can chi và giờ hoàng đạo cho các việc quan trọng như cưới hỏi, khai trương, xuất hành.</li>
+        <li data-i18n="li_tax"><strong>Tính Thuế TNCN 2026</strong> — tính nhanh thuế thu nhập cá nhân theo biểu thuế 5 bậc và mức giảm trừ gia cảnh mới nhất năm 2026.</li>
+      </ul>
+      <p><span class="pill" data-i18n="pill">Sắp ra mắt</span> <span data-i18n="p_soon">Tử vi & Bát Tự, giá vàng, tỷ giá và nhiều công cụ khác đang được phát triển.</span></p>
+      <h2 data-i18n="h_commit">Cam kết của chúng tôi</h2>
+      <ul>
+        <li data-i18n="li_c1"><strong>Miễn phí & không cần đăng nhập:</strong> mọi công cụ đều hoạt động ngay trên trình duyệt.</li>
+        <li data-i18n="li_c2"><strong>Chính xác:</strong> các phép tính dựa trên dữ liệu và thuật toán được kiểm chứng.</li>
+        <li data-i18n="li_c3"><strong>Tôn trọng người dùng:</strong> chúng tôi coi trọng quyền riêng tư và trải nghiệm của bạn.</li>
+      </ul>
+      <h2 data-i18n="h_note">Lưu ý</h2>
+      <p data-i18n="p_note">Các thông tin và kết quả trên trang mang tính chất tham khảo, giúp bạn thuận tiện hơn khi ra quyết định. Với những vấn đề pháp lý hoặc tài chính quan trọng, bạn nên tham khảo thêm ý kiến chuyên gia.</p>
+      <h2 data-i18n="h_contact">Liên hệ</h2>
+      <p><span data-i18n="p_contact">Mọi góp ý xin gửi về:</span> <a href="mailto:lienhe@tienichviet.com">lienhe@tienichviet.com</a></p>
+    </div>
+  </main>
+  <footer>
+    <div class="name">Tiện Ích Việt</div>
+    <nav>
+      <a href="index.html" data-i18n="navHome">Trang chủ</a>
+      <a href="gioi-thieu.html" data-i18n="navAbout">Giới thiệu</a>
+      <a href="chinh-sach.html" data-i18n="navPrivacy">Chính sách</a>
+    </nav>
+    <div class="copy" data-i18n="copy">© 2026 Tiện Ích Việt · Thông tin trên trang mang tính tham khảo.</div>
+  </footer>
+<script>
+var I18N={
+ vi:{navHome:"Trang chủ",navAbout:"Giới thiệu",navPrivacy:"Chính sách",title:"Giới thiệu",lead:"Về Tiện Ích Việt và sứ mệnh của chúng tôi.",h_who:"Chúng tôi là ai?",p_who:"Tiện Ích Việt là một trang web tập hợp các công cụ tra cứu trực tuyến miễn phí, phục vụ những nhu cầu thiết thực trong đời sống hằng ngày của người Việt. Chúng tôi tin rằng những thông tin hữu ích như xem ngày lành tháng tốt hay tính toán thuế nên được tiếp cận dễ dàng, nhanh chóng và hoàn toàn miễn phí.",h_tools:"Công cụ hiện có",li_lunar:"Lịch Âm & Ngày Tốt — tra cứu lịch âm dương, ngày hoàng đạo, can chi và giờ hoàng đạo cho các việc quan trọng như cưới hỏi, khai trương, xuất hành.",li_tax:"Tính Thuế TNCN 2026 — tính nhanh thuế thu nhập cá nhân theo biểu thuế 5 bậc và mức giảm trừ gia cảnh mới nhất năm 2026.",pill:"Sắp ra mắt",p_soon:"Tử vi & Bát Tự, giá vàng, tỷ giá và nhiều công cụ khác đang được phát triển.",h_commit:"Cam kết của chúng tôi",li_c1:"Miễn phí & không cần đăng nhập: mọi công cụ đều hoạt động ngay trên trình duyệt.",li_c2:"Chính xác: các phép tính dựa trên dữ liệu và thuật toán được kiểm chứng.",li_c3:"Tôn trọng người dùng: chúng tôi coi trọng quyền riêng tư và trải nghiệm của bạn.",h_note:"Lưu ý",p_note:"Các thông tin và kết quả trên trang mang tính chất tham khảo, giúp bạn thuận tiện hơn khi ra quyết định. Với những vấn đề pháp lý hoặc tài chính quan trọng, bạn nên tham khảo thêm ý kiến chuyên gia.",h_contact:"Liên hệ",p_contact:"Mọi góp ý xin gửi về:",copy:"© 2026 Tiện Ích Việt · Thông tin trên trang mang tính tham khảo."},
+ ko:{navHome:"홈",navAbout:"소개",navPrivacy:"정책",title:"소개",lead:"Tiện Ích Việt과 우리의 사명에 대해.",h_who:"우리는 누구인가요?",p_who:"Tiện Ích Việt은 베트남 사람들의 일상에 필요한 무료 온라인 조회 도구를 모은 웹사이트입니다. 좋은 날 고르기나 세금 계산 같은 유용한 정보는 누구나 쉽고 빠르게, 그리고 완전히 무료로 이용할 수 있어야 한다고 믿습니다.",h_tools:"제공 도구",li_lunar:"음력 & 길일 — 음양력, 황도길일, 간지, 그리고 결혼·개업·출행 등 중요한 일을 위한 길시를 조회합니다.",li_tax:"베트남 소득세 계산 2026 — 2026년 최신 5단계 세율과 인적공제로 개인소득세를 빠르게 계산합니다.",pill:"출시 예정",p_soon:"사주(Tử Vi·Bát Tự), 금값, 환율 등 더 많은 도구를 준비 중입니다.",h_commit:"우리의 약속",li_c1:"무료 & 로그인 불필요: 모든 도구가 브라우저에서 바로 작동합니다.",li_c2:"정확성: 검증된 데이터와 알고리즘에 기반해 계산합니다.",li_c3:"사용자 존중: 여러분의 개인정보와 경험을 소중히 여깁니다.",h_note:"유의사항",p_note:"본 페이지의 정보와 결과는 참고용이며, 결정에 도움을 드리기 위한 것입니다. 중요한 법률·재무 사안은 전문가의 조언을 함께 구하시기 바랍니다.",h_contact:"문의",p_contact:"의견은 다음으로 보내주세요:",copy:"© 2026 Tiện Ích Việt · 본 페이지의 정보는 참고용입니다."},
+ en:{navHome:"Home",navAbout:"About",navPrivacy:"Privacy",title:"About",lead:"About Tiện Ích Việt and our mission.",h_who:"Who we are",p_who:"Tiện Ích Việt is a website that brings together free online lookup tools for the everyday needs of people in Vietnam. We believe useful information — like choosing an auspicious day or calculating tax — should be easy, fast and completely free to access.",h_tools:"Available tools",li_lunar:"Lunar Calendar & Auspicious Days — look up the lunar/solar calendar, auspicious days, Can Chi and good hours for important events like weddings, openings and travel.",li_tax:"Income Tax Calculator 2026 — quickly calculate personal income tax with the latest 2026 five-bracket rates and personal deductions.",pill:"Coming soon",p_soon:"Tử Vi & Bát Tự astrology, gold prices, exchange rates and more tools are in development.",h_commit:"Our commitments",li_c1:"Free & no sign-in: every tool works right in your browser.",li_c2:"Accurate: calculations are based on verified data and algorithms.",li_c3:"Respectful: we value your privacy and your experience.",h_note:"Please note",p_note:"Information and results on this site are for reference to help you decide more easily. For important legal or financial matters, please also consult a professional.",h_contact:"Contact",p_contact:"Send your feedback to:",copy:"© 2026 Tiện Ích Việt · Information on this site is for reference only."}
+};
+var _mem="vi";
+function getLang(){try{return localStorage.getItem("til_lang")||"vi"}catch(e){return _mem}}
+function setLang(l){_mem=l;try{localStorage.setItem("til_lang",l)}catch(e){}applyLang(l)}
+function applyLang(l){if(!I18N[l])l="vi";document.documentElement.lang=l;
+  document.querySelectorAll("[data-i18n]").forEach(function(el){var k=el.getAttribute("data-i18n");if(I18N[l][k]!==undefined)el.textContent=I18N[l][k];});
+  document.querySelectorAll("#langSwitch button").forEach(function(b){b.classList.toggle("active",b.dataset.lang===l);});}
+document.getElementById("langSwitch").addEventListener("click",function(e){if(e.target.dataset.lang)setLang(e.target.dataset.lang);});
+applyLang(getLang());
+</script>
+</body>
+</html>
