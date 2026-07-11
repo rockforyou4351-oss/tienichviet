@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tính Thuế TNCN 2026 – Công Cụ Tính Thuế Thu Nhập Cá Nhân Mới Nhất</title>
+<meta name="description" content="Công cụ tính thuế thu nhập cá nhân (TNCN) 2026 theo biểu thuế 5 bậc và mức giảm trừ gia cảnh mới: bản thân 15,5 triệu, người phụ thuộc 6,2 triệu. Tính nhanh, chính xác, miễn phí.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Be+Vietnam+Pro:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --teal:#0d6e5f;
+    --teal-deep:#0a4f45;
+    --teal-bright:#17a58c;
+    --gold:#c9a84c;
+    --cream:#f6f4ee;
+    --paper:#fffefb;
+    --ink:#12211d;
+    --ink-soft:#5a6b64;
+    --line:#e4e0d4;
+    --tax:#b4502f;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    font-family:'Be Vietnam Pro',system-ui,sans-serif;
+    background:
+      radial-gradient(circle at 100% 0%, #12876f 0%, transparent 40%),
+      radial-gradient(circle at 0% 100%, #0a4f45 0%, transparent 45%),
+      var(--teal);
+    color:var(--ink);min-height:100vh;padding:28px 16px 60px;line-height:1.55;
+  }
+  .wrap{max-width:520px;margin:0 auto}
+
+  header.brand{color:var(--cream);text-align:center;margin-bottom:22px}
+  .brand .eyebrow{
+    font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.28em;
+    text-transform:uppercase;color:#bfe6dc;
+  }
+  .brand h1{
+    font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:29px;
+    line-height:1.15;margin-top:6px;text-shadow:0 2px 10px rgba(0,0,0,.3);
+  }
+  .brand p{font-size:13px;color:#d5eee7;margin-top:6px}
+
+  .card{
+    background:var(--paper);border-radius:16px;overflow:hidden;
+    box-shadow:0 20px 46px -18px rgba(0,0,0,.5);
+  }
+  .card-head{
+    background:linear-gradient(120deg,var(--teal-deep),var(--teal));
+    color:var(--cream);padding:16px 20px;display:flex;align-items:center;gap:10px;
+  }
+  .card-head .dong{
+    font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:22px;
+    width:38px;height:38px;border-radius:9px;background:rgba(255,255,255,.14);
+    display:grid;place-items:center;border:1px solid rgba(255,255,255,.2);
+  }
+  .card-head h2{font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:600}
+  .card-head span{font-size:12px;color:#bfe6dc;display:block}
+
+  .inputs{padding:20px}
+  .field{margin-bottom:16px}
+  .field label{display:block;font-size:13.5px;font-weight:600;margin-bottom:6px}
+  .field .hint{font-weight:400;color:var(--ink-soft);font-size:12px}
+  .money-input{position:relative}
+  .money-input input{
+    width:100%;border:1.5px solid var(--line);border-radius:10px;
+    padding:13px 44px 13px 14px;font-family:'Space Mono',monospace;font-size:18px;
+    font-weight:700;color:var(--ink);background:#fcfbf7;text-align:right;
+  }
+  .money-input input:focus{outline:none;border-color:var(--teal-bright);background:#fff}
+  .money-input .unit{
+    position:absolute;right:14px;top:50%;transform:translateY(-50%);
+    font-family:'Space Mono',monospace;font-weight:700;color:var(--ink-soft);font-size:15px;
+  }
+
+  .row{display:flex;gap:12px}
+  .row .field{flex:1}
+  .stepper{display:flex;align-items:center;border:1.5px solid var(--line);border-radius:10px;overflow:hidden;background:#fcfbf7}
+  .stepper button{
+    border:none;background:transparent;width:44px;height:48px;font-size:22px;
+    color:var(--teal);cursor:pointer;font-weight:700
+  }
+  .stepper button:hover{background:#eef6f3}
+  .stepper input{
+    flex:1;border:none;text-align:center;font-family:'Space Mono',monospace;
+    font-weight:700;font-size:18px;background:transparent;color:var(--ink);width:100%
+  }
+  .stepper input:focus{outline:none}
+
+  .toggle{display:flex;align-items:center;gap:10px;background:#f1f6f4;border-radius:10px;padding:12px 14px;cursor:pointer}
+  .toggle input{width:18px;height:18px;accent-color:var(--teal)}
+  .toggle .t-txt{font-size:13.5px}
+  .toggle .t-txt b{display:block}
+  .toggle .t-txt span{color:var(--ink-soft);font-size:12px}
+
+  /* ---- receipt (signature element) ---- */
+  .receipt{border-top:2px dashed var(--line);background:#fbfaf5;padding:20px 22px 24px}
+  .receipt h3{
+    font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--ink-soft);text-align:center;margin-bottom:16px;
+  }
+  .line{display:flex;justify-content:space-between;align-items:baseline;padding:7px 0;font-size:14px;gap:12px}
+  .line .k{color:var(--ink-soft)}
+  .line .v{font-family:'Space Mono',monospace;font-weight:700;white-space:nowrap}
+  .line.sub .k{padding-left:14px;font-size:13px}
+  .line.minus .v{color:var(--tax)}
+  .divide{border-top:1px solid var(--line);margin:8px 0}
+
+  .brackets{margin:6px 0 4px;background:#fff;border:1px solid var(--line);border-radius:10px;padding:6px 12px}
+  .brackets .bk{display:flex;justify-content:space-between;font-size:12.5px;padding:5px 0;color:var(--ink-soft)}
+  .brackets .bk.active{color:var(--ink);font-weight:600}
+  .brackets .bk .amt{font-family:'Space Mono',monospace}
+
+  .total{
+    margin-top:14px;background:linear-gradient(120deg,var(--teal-deep),var(--teal));
+    border-radius:12px;padding:16px 18px;color:#fff;
+  }
+  .total .tt-row{display:flex;justify-content:space-between;align-items:center;padding:4px 0}
+  .total .tt-row .lbl{font-size:13px;color:#cfeae3}
+  .total .tt-row .num{font-family:'Space Mono',monospace;font-weight:700;font-size:16px}
+  .total .big{border-top:1px solid rgba(255,255,255,.18);margin-top:8px;padding-top:12px}
+  .total .big .lbl{font-size:14px;color:#fff;font-weight:600}
+  .total .big .num{font-family:'Space Grotesk',sans-serif;font-size:26px;color:var(--gold)}
+
+  .note{font-size:11.5px;color:var(--ink-soft);margin-top:14px;line-height:1.6}
+
+  .adslot{margin-top:22px;border:1px dashed rgba(224,230,220,.4);border-radius:12px;padding:20px;text-align:center;color:#d5eee7;font-size:13px;opacity:.8}
+
+  .article{background:var(--paper);border-radius:14px;padding:24px 22px;margin-top:22px;box-shadow:0 12px 30px -18px rgba(0,0,0,.4)}
+  .article h2{font-family:'Space Grotesk',sans-serif;font-size:18px;color:var(--teal-deep);margin:16px 0 8px}
+  .article h2:first-child{margin-top:0}
+  .article p{font-size:14px;color:var(--ink-soft);margin-bottom:9px}
+  .article strong{color:var(--ink)}
+  .article table{width:100%;border-collapse:collapse;margin:8px 0;font-size:13px}
+  .article th,.article td{border:1px solid var(--line);padding:7px 9px;text-align:left}
+  .article th{background:#eef6f3;font-weight:600}
+  .article td:last-child{font-family:'Space Mono',monospace;text-align:right}
+
+  footer{text-align:center;color:#d5eee7;font-size:12px;margin-top:22px;opacity:.85;line-height:1.7}
+
+  @media (max-width:400px){.brand h1{font-size:24px}.total .big .num{font-size:22px}}
+  :focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="brand">
+    <div class="eyebrow">Cập nhật 2026</div>
+    <h1>Tính Thuế Thu Nhập Cá Nhân</h1>
+    <p>Biểu thuế 5 bậc mới · Giảm trừ gia cảnh 15,5 triệu</p>
+  </header>
+
+  <div class="card">
+    <div class="card-head">
+      <div class="dong">₫</div>
+      <div><h2>Nhập thu nhập của bạn</h2><span>Tính theo tháng · đơn vị VNĐ</span></div>
+    </div>
+
+    <div class="inputs">
+      <div class="field">
+        <label for="gross">Tổng thu nhập / tháng <span class="hint">(lương gộp trước thuế)</span></label>
+        <div class="money-input">
+          <input type="text" id="gross" inputmode="numeric" placeholder="30.000.000">
+          <span class="unit">₫</span>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="field">
+          <label for="dep">Người phụ thuộc</label>
+          <div class="stepper">
+            <button type="button" id="minus">−</button>
+            <input type="text" id="dep" inputmode="numeric" value="0" readonly>
+            <button type="button" id="plus">+</button>
+          </div>
+        </div>
+        <div class="field">
+          <label for="ins">Bảo hiểm / tháng <span class="hint">(tùy chọn)</span></label>
+          <div class="money-input">
+            <input type="text" id="ins" inputmode="numeric" placeholder="tự động">
+            <span class="unit">₫</span>
+          </div>
+        </div>
+      </div>
+
+      <label class="toggle">
+        <input type="checkbox" id="autoIns" checked>
+        <span class="t-txt"><b>Tự động trừ bảo hiểm bắt buộc (10,5%)</b><span>BHXH 8% + BHYT 1,5% + BHTN 1%</span></span>
+      </label>
+    </div>
+
+    <div class="receipt">
+      <h3>— Chi tiết tính thuế —</h3>
+      <div id="out"></div>
+    </div>
+  </div>
+
+  <div class="adslot">Khu vực quảng cáo &nbsp;•&nbsp; <!-- Google AdSense --></div>
+
+  <article class="article">
+    <h2>Biểu thuế TNCN 2026 (5 bậc)</h2>
+    <p>Từ kỳ tính thuế 2026, biểu thuế lũy tiến rút gọn từ 7 bậc xuống còn <strong>5 bậc</strong>, áp dụng cho thu nhập tính thuế theo tháng:</p>
+    <table>
+      <tr><th>Bậc</th><th>Thu nhập tính thuế / tháng</th><th>Thuế suất</th></tr>
+      <tr><td>1</td><td>Đến 10 triệu</td><td>5%</td></tr>
+      <tr><td>2</td><td>Trên 10 – 30 triệu</td><td>10%</td></tr>
+      <tr><td>3</td><td>Trên 30 – 60 triệu</td><td>20%</td></tr>
+      <tr><td>4</td><td>Trên 60 – 100 triệu</td><td>30%</td></tr>
+      <tr><td>5</td><td>Trên 100 triệu</td><td>35%</td></tr>
+    </table>
+
+    <h2>Mức giảm trừ gia cảnh mới</h2>
+    <p>Áp dụng từ 2026: <strong>bản thân người nộp thuế 15,5 triệu đồng/tháng</strong>, mỗi <strong>người phụ thuộc 6,2 triệu đồng/tháng</strong>. Nhờ đó, người không có người phụ thuộc chỉ bắt đầu nộp thuế khi thu nhập vượt khoảng 17 triệu/tháng.</p>
+
+    <h2>Cách tính thuế</h2>
+    <p>Thu nhập tính thuế = Tổng thu nhập − Bảo hiểm bắt buộc − Giảm trừ gia cảnh. Sau đó áp dụng từng bậc thuế lên phần thu nhập tương ứng rồi cộng lại.</p>
+  </article>
+
+  <footer>
+    Kết quả chỉ mang tính tham khảo theo biểu thuế TNCN 2026.<br>
+    Số thuế thực tế có thể khác tùy khoản miễn trừ riêng.
+  </footer>
+</div>
+
+<script>
+/* ===== TNCN 2026 constants ===== */
+var SELF_DED=15500000;          // giảm trừ bản thân / tháng
+var DEP_DED=6200000;            // giảm trừ mỗi người phụ thuộc / tháng
+var INS_RATE=0.105;             // BHXH+BHYT+BHTN người lao động đóng
+/* biểu thuế 5 bậc: [ngưỡng trần của bậc, thuế suất] */
+var BRACKETS=[
+  {cap:10000000, rate:0.05, label:"Đến 10 tr (5%)"},
+  {cap:30000000, rate:0.10, label:"10–30 tr (10%)"},
+  {cap:60000000, rate:0.20, label:"30–60 tr (20%)"},
+  {cap:100000000,rate:0.30, label:"60–100 tr (30%)"},
+  {cap:Infinity, rate:0.35, label:"Trên 100 tr (35%)"}
+];
+
+function fmt(n){
+  n=Math.round(n);
+  return n.toLocaleString('vi-VN');
+}
+function parseNum(s){return parseInt((s||"").replace(/[^0-9]/g,""),10)||0;}
+
+function calcTax(taxable){
+  var tax=0, lower=0, parts=[];
+  for(var i=0;i<BRACKETS.length;i++){
+    var b=BRACKETS[i];
+    if(taxable>lower){
+      var slice=Math.min(taxable,b.cap)-lower;
+      var t=slice*b.rate;
+      tax+=t;
+      parts.push({label:b.label, amt:t, active:true});
+    } else {
+      parts.push({label:b.label, amt:0, active:false});
+    }
+    lower=b.cap;
+  }
+  return {tax:tax, parts:parts};
+}
+
+var $=function(id){return document.getElementById(id);};
+
+function render(){
+  var gross=parseNum($('gross').value);
+  var dep=parseInt($('dep').value,10)||0;
+  var autoIns=$('autoIns').checked;
+  var ins = autoIns ? Math.round(gross*INS_RATE) : parseNum($('ins').value);
+
+  var depDed=dep*DEP_DED;
+  var taxable=gross-ins-SELF_DED-depDed;
+  if(taxable<0) taxable=0;
+
+  var r=calcTax(taxable);
+  var net=gross-ins-r.tax;
+
+  var bracketRows=r.parts.filter(function(p){return p.active;}).map(function(p){
+    return '<div class="bk active"><span>'+p.label+'</span><span class="amt">'+fmt(p.amt)+' ₫</span></div>';
+  }).join("");
+
+  var html=''
+   +'<div class="line"><span class="k">Tổng thu nhập</span><span class="v">'+fmt(gross)+' ₫</span></div>'
+   +'<div class="line minus sub"><span class="k">− Bảo hiểm ('+(autoIns?'10,5%':'nhập tay')+')</span><span class="v">'+fmt(ins)+' ₫</span></div>'
+   +'<div class="line minus sub"><span class="k">− Giảm trừ bản thân</span><span class="v">'+fmt(SELF_DED)+' ₫</span></div>'
+   +(dep>0?'<div class="line minus sub"><span class="k">− Người phụ thuộc ×'+dep+'</span><span class="v">'+fmt(depDed)+' ₫</span></div>':'')
+   +'<div class="divide"></div>'
+   +'<div class="line"><span class="k"><b>Thu nhập tính thuế</b></span><span class="v">'+fmt(taxable)+' ₫</span></div>';
+
+  if(taxable>0){
+    html+='<div class="brackets">'+bracketRows+'</div>';
+  }
+
+  html+='<div class="total">'
+   +'<div class="tt-row"><span class="lbl">Thuế TNCN phải nộp</span><span class="num" style="color:#ffd9a0">'+fmt(r.tax)+' ₫</span></div>'
+   +'<div class="tt-row big"><span class="lbl">Thực nhận (sau thuế + BH)</span><span class="num">'+fmt(net)+' ₫</span></div>'
+   +'</div>';
+
+  if(gross===0){
+    html='<p style="text-align:center;color:var(--ink-soft);font-size:14px;padding:14px 0">Nhập thu nhập để xem kết quả.</p>';
+  }
+  $('out').innerHTML=html;
+}
+
+/* live formatting of money inputs */
+function bindMoney(id){
+  var el=$(id);
+  el.addEventListener('input',function(){
+    var v=parseNum(el.value);
+    el.value = v? v.toLocaleString('vi-VN') : "";
+    render();
+  });
+}
+bindMoney('gross'); bindMoney('ins');
+$('autoIns').addEventListener('change',function(){
+  $('ins').disabled=this.checked;
+  $('ins').style.opacity=this.checked?.5:1;
+  render();
+});
+$('plus').addEventListener('click',function(){$('dep').value=(+$('dep').value)+1;render();});
+$('minus').addEventListener('click',function(){$('dep').value=Math.max(0,(+$('dep').value)-1);render();});
+$('ins').disabled=true;$('ins').style.opacity=.5;
+render();
+</script>
+</body>
+</html>

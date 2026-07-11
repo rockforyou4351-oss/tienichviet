@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tiện Ích Việt – Lịch Âm, Xem Ngày Tốt, Tính Thuế TNCN 2026</title>
+<meta name="description" content="Bộ công cụ tra cứu miễn phí cho người Việt: xem lịch âm hôm nay, ngày tốt xấu, giờ hoàng đạo và tính thuế thu nhập cá nhân 2026. Nhanh, chính xác, dễ dùng.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#221c17;
+    --ink-2:#2e2620;
+    --stone:#efece4;
+    --paper:#fffefb;
+    --gold:#c9a24b;
+    --gold-soft:#e2c987;
+    --muted:#6a615a;
+    --line:#e2ddd1;
+    --red:#8c1c13;
+    --teal:#0d6e5f;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Be Vietnam Pro',system-ui,sans-serif;background:var(--stone);color:var(--ink);line-height:1.55}
+
+  /* hero */
+  .hero{
+    background:
+      radial-gradient(circle at 90% -10%, #3a2f26 0%, transparent 45%),
+      var(--ink);
+    color:var(--paper);padding:48px 20px 60px;position:relative;overflow:hidden;
+  }
+  .hero::after{
+    content:"";position:absolute;left:0;right:0;bottom:0;height:3px;
+    background:linear-gradient(90deg,var(--red) 0 50%,var(--teal) 50% 100%);
+  }
+  .inner{max-width:760px;margin:0 auto}
+  .eyebrow{
+    font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold-soft);
+    display:flex;align-items:center;gap:10px;
+  }
+  .eyebrow::before{content:"";width:26px;height:1px;background:var(--gold)}
+  h1{
+    font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(30px,7vw,46px);
+    line-height:1.08;margin:14px 0 12px;letter-spacing:-.02em;
+  }
+  h1 .accent{color:var(--gold-soft)}
+  .hero p{font-size:16px;color:#d8cfc4;max-width:52ch}
+
+  /* tools */
+  .tools{max-width:760px;margin:-34px auto 0;padding:0 20px 10px;position:relative;z-index:2}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  @media (max-width:560px){.grid{grid-template-columns:1fr}}
+
+  .card{
+    display:block;text-decoration:none;color:inherit;background:var(--paper);
+    border-radius:16px;overflow:hidden;border:1px solid var(--line);
+    box-shadow:0 18px 40px -22px rgba(0,0,0,.4);transition:transform .18s, box-shadow .18s;
+  }
+  .card:hover{transform:translateY(-4px);box-shadow:0 26px 50px -22px rgba(0,0,0,.45)}
+  .card .top{height:6px}
+  .card.lunar .top{background:var(--red)}
+  .card.tax .top{background:var(--teal)}
+  .card .body{padding:22px}
+  .glyph{
+    width:52px;height:52px;border-radius:13px;display:grid;place-items:center;
+    font-family:'Space Grotesk',sans-serif;font-size:26px;font-weight:700;margin-bottom:14px;
+  }
+  .card.lunar .glyph{background:#f9ece9;color:var(--red)}
+  .card.tax .glyph{background:#e6f3f0;color:var(--teal)}
+  .card h2{font-family:'Space Grotesk',sans-serif;font-size:20px;font-weight:600;margin-bottom:6px}
+  .card p{font-size:14px;color:var(--muted);margin-bottom:14px}
+  .go{font-size:14px;font-weight:600;display:inline-flex;align-items:center;gap:6px}
+  .card.lunar .go{color:var(--red)}
+  .card.tax .go{color:var(--teal)}
+  .go .arrow{transition:transform .18s}
+  .card:hover .go .arrow{transform:translateX(4px)}
+
+  /* soon */
+  .soon{border:1px dashed var(--line);border-radius:16px;background:transparent;
+    padding:22px;display:flex;align-items:center;gap:14px;color:var(--muted)}
+  .soon .glyph{background:#e7e2d7;color:var(--muted);margin-bottom:0;flex-shrink:0}
+  .soon h3{font-family:'Space Grotesk',sans-serif;font-size:16px;color:var(--ink);margin-bottom:2px}
+  .soon p{font-size:13px}
+
+  /* intro */
+  .intro{max-width:760px;margin:34px auto 0;padding:0 20px}
+  .intro-card{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:26px 24px}
+  .intro-card h2{font-family:'Space Grotesk',sans-serif;font-size:19px;margin-bottom:8px}
+  .intro-card p{font-size:14.5px;color:var(--muted);margin-bottom:10px}
+
+  footer{max-width:760px;margin:34px auto 0;padding:24px 20px 44px;border-top:1px solid var(--line);
+    display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;align-items:center}
+  footer .name{font-family:'Space Grotesk',sans-serif;font-weight:600}
+  footer nav a{color:var(--muted);text-decoration:none;font-size:13.5px;margin-left:16px}
+  footer nav a:hover{color:var(--ink)}
+  footer .copy{width:100%;font-size:12px;color:var(--muted);opacity:.8}
+
+  :focus-visible{outline:3px solid var(--gold);outline-offset:3px;border-radius:6px}
+</style>
+</head>
+<body>
+
+  <header class="hero">
+    <div class="inner">
+      <div class="eyebrow">Công cụ tra cứu miễn phí</div>
+      <h1>Việc quan trọng,<br><span class="accent">chọn đúng ngày đúng giờ.</span></h1>
+      <p>Tra cứu nhanh những gì người Việt cần mỗi ngày — lịch âm, ngày tốt xấu và thuế thu nhập. Miễn phí, không cần đăng nhập.</p>
+    </div>
+  </header>
+
+  <main class="tools">
+    <div class="grid">
+
+      <a class="card lunar" href="lich-am.html">
+        <div class="top"></div>
+        <div class="body">
+          <div class="glyph">☾</div>
+          <h2>Lịch Âm &amp; Ngày Tốt</h2>
+          <p>Xem lịch âm hôm nay, ngày hoàng đạo, can chi và giờ tốt cho cưới hỏi, khai trương, xuất hành.</p>
+          <span class="go">Xem lịch âm <span class="arrow">→</span></span>
+        </div>
+      </a>
+
+      <a class="card tax" href="thue-tncn.html">
+        <div class="top"></div>
+        <div class="body">
+          <div class="glyph">₫</div>
+          <h2>Tính Thuế TNCN 2026</h2>
+          <p>Tính thuế thu nhập cá nhân theo biểu thuế 5 bậc và giảm trừ gia cảnh mới nhất 2026.</p>
+          <span class="go">Tính thuế ngay <span class="arrow">→</span></span>
+        </div>
+      </a>
+
+    </div>
+
+    <div style="margin-top:16px">
+      <div class="soon">
+        <div class="glyph">✦</div>
+        <div>
+          <h3>Sắp ra mắt</h3>
+          <p>Tử vi &amp; Bát Tự, giá vàng, tỷ giá và nhiều công cụ khác đang được phát triển.</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <section class="intro">
+    <div class="intro-card">
+      <h2>Về Tiện Ích Việt</h2>
+      <p>Tiện Ích Việt tập hợp các công cụ tra cứu thiết thực cho cuộc sống hằng ngày: từ việc chọn ngày lành tháng tốt theo lịch âm, đến tính toán nghĩa vụ thuế thu nhập cá nhân theo quy định mới nhất.</p>
+      <p>Tất cả công cụ đều miễn phí, hoạt động ngay trên trình duyệt và được cập nhật theo dữ liệu chính xác. Kết quả mang tính tham khảo, giúp bạn ra quyết định thuận lợi hơn.</p>
+    </div>
+  </section>
+
+  <footer>
+    <div class="name">Tiện Ích Việt</div>
+    <nav>
+      <a href="index.html">Trang chủ</a>
+      <a href="gioi-thieu.html">Giới thiệu</a>
+      <a href="chinh-sach.html">Chính sách</a>
+    </nav>
+    <div class="copy">© 2026 Tiện Ích Việt · Thông tin trên trang mang tính tham khảo.</div>
+  </footer>
+
+</body>
+</html>
